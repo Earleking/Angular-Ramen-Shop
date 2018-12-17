@@ -7,3 +7,5 @@ Hello, this is a Website that I made for a School project. This project involved
 - Browsing a catalog
 
 This website was created using AngularJS for the front end and NodeJS and Express for the backend
+
+![alt text](https://i.imgur.com/aEBlI1i.png)
