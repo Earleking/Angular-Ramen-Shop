@@ -1,0 +1,28 @@
+<div>Manage Items</div>
+<table>
+    <thead>
+        <tr>
+            <td><b>Item</b></td>
+            <td><b>Price</b></td>
+            <td><b>Stock</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let item of items">
+            <td><input #name type="text" value="{{item.name}}"></td>
+            <td><input #price type="number" value="{{item.price}}"></td>
+            <td><input #quant type="number" value="{{item.quantity}}"></td>
+            <td><button (click)="saveItem(name.value, price.value, quant.value, item)">Save Item</button></td>
+            <td><button (click)="deleteItem(item)">Delete Item</button></td>
+            <td><button (click)="flagItem(item)">Flagged: {{item.flagged}}</button></td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+Add a New Item
+<hr>
+<input #newName type="text" placeholder="Name">
+<input #newStock type="number" placeholder="Stock">
+<input #newPrice type="number" placeholder="Price">
+<input #newUrl type="text" placeholder="Image Url">
+<button (click)="createItem(newName.value, newStock.value, newPrice.value, newUrl.value)">Add Item</button>

@@ -1,0 +1,20 @@
+<div class="policy">
+    <div class="policy-title">Privacy Policy</div>
+    <div class="policy-body">
+        {{text}}
+    </div>
+</div>
+
+<button *ngIf="user.authentication == 0  && user.active" (click)="showOverlay()">Edit Policy</button>
+
+<div class="overlay-background" [style.display]="overlayDisplay" (click)="hideOverlay()"></div>
+<div class="overlay" [style.display]="overlayDisplay">
+    <div class="overlay-title vertical-center">
+        Edit Policy
+    </div>
+    <textarea #newText style="width: 80%; left: 10%; position: relative;">{{text}}</textarea>
+    <div class="overlay-options vertical-center">
+        <button class="overlay-button" (click)="saveText(newText.value)">Save</button>
+        <button class="overlay-button" (click)="hideOverlay()">Cancel</button>
+    </div>
+</div>

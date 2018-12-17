@@ -1,0 +1,72 @@
+<div class="catalog-title">
+    Catalog
+</div>
+<div class="catalog-container">
+    <div *ngFor="let ramen of ramens" class="catalog-item" (click)="showOverlay(ramen)" [ngStyle]="{'background-image': 'url('+ramen.url+')'}">
+        <div class="item-text">{{ramen.name}}</div>
+        <!-- {{ramen.url}} -->
+    </div>
+</div>
+
+<div class="overlay-background" [style.display]="overlayDisplay" (click)="hideOverlay()"></div>
+<div class="overlay" [style.display]="overlayDisplay">
+    <div class="overlay-image" [ngStyle]="{'background-image': 'url('+currentRamen.url+')'}"></div>
+    <div class="overlay-details">
+        <table class="overlay-table"> 
+            <tbody>
+                <tr>
+                    <td><b>Item:</b></td>
+                    <td>{{currentRamen.name}}</td>
+                </tr>
+                <tr>
+                    <td><b>Price:</b></td>
+                    <td>{{currentRamen.price}}</td>
+                </tr>
+                <tr>
+                    <td><b>Stock:</b></td>
+                    <td>{{currentRamen.quantity}}</td>
+                </tr>
+                <tr>
+                    <td><b>Quantity:</b></td>
+                    <td><input #quantity type="number" value="1" min="1" max="{{currentRamen.quantity}}" class="overlay-input"></td>
+                </tr>
+            </tbody>
+        </table>
+        <select #selector class="overlay-button">
+            <option value="main">
+                Cart
+            </option>
+            <option *ngFor="let z of collections.items | toarray" value="{{z.value._id}}">
+                {{z.value.name}}
+            </option>
+        </select>
+        <button *ngIf="user.active" class="overlay-button" (click)="addToCart(currentRamen, quantity.value, selector.value)">Add</button>
+    </div>
+</div>
+ 
+<div class="overlay-comments" [style.display]="overlayDisplay">
+    <div *ngIf="showComments">
+        <div class="comment-title">
+            Comments: <a *ngIf="user.active" class="add-comment-button" (click)="addComments()">Add a Comment</a>
+        </div>
+        <ul class="comments-list">
+            <li *ngFor="let comment of currentComments">
+                <div class="comment-title">{{comment.title}}: {{comment.rating}} ★</div>
+                <div class="comment-user">{{comment.name}}</div>
+                <div class="comment-text">{{comment.text}}</div>
+                <hr>
+            </li>
+        </ul>
+    </div>
+    <div *ngIf="!showComments">
+        <div class="comment-title">
+            Adding Comment: <a *ngIf="user.active" class="add-comment-button" (click)="stopAddingComments()">Show Comments</a>
+        </div>
+        <input #title type="text" placeholder="Title Here" class="overlay-in">
+        <textarea #text name="" id="" cols="30" rows="10" placeholder="Text here" class="overlay-in" style="height: 100px"></textarea>
+        <div class="overlay-score">
+            Rating: <input #rating type="number" min="1" value="5" max="5">
+        </div>
+        <button (click)="addComment(title.value, text.value, rating.value)" class="overlay-in">Submit</button>
+    </div>
+</div>

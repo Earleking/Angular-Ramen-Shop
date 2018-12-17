@@ -1,0 +1,28 @@
+
+.login-box {
+    width: 30%;
+    min-width: 500px;
+    background-color: #f1f1f1;
+    padding: 15px;
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 20%;
+    border-radius: 15px;
+}
+
+.login-input {
+    width: 60%;
+    left: 20%;
+    position: relative;
+    margin: 10px 0;
+    /* height: 30px; */
+    border-radius: 5px;
+    padding: 10px;
+}
+
+.login-title {
+    text-align: center;
+    font-family: monospace;
+    font-size: 40px;
+}

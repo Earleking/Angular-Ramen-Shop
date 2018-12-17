@@ -1,0 +1,131 @@
+.catalog-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, 150px);
+    /* grid-template-rows: repeat(auto-fit, 150px); */
+    width: 90%;
+    margin-top: 5%; 
+    position: relative;
+    left: 5%;
+    row-gap: 10px;
+    column-gap: 10px;
+}
+
+.catalog-item {
+    position: relative;
+    width: 100%;
+    height: 150px;
+    /* background-color: red; */
+    /* background: url('https://www.seriouseats.com/images/2012/09/20120921-223365-bestofjapan-ramenstreet.jpg'); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    /* background-image: url('https://www.seriouseats.com/images/2012/09/20120921-223365-bestofjapan-ramenstreet.jpg'); */
+}
+
+.catalog-item:hover {
+    cursor: pointer;
+}
+
+.catalog-title {
+    text-align: center;
+    font-size: 35px;
+}
+
+.item-text {
+    color: white;
+    text-align: center;
+    bottom: 0;
+    position: absolute;
+    width: 100%;
+}
+
+.overlay-background {
+    background-color: rgba(0, 0, 0, 0.479);
+    height: 100vh;
+    width: 100vw;
+    position: absolute;
+    top: 0;
+    /* display: none; */
+}
+
+.overlay {
+    width: 50%;
+    height: 250px;
+    z-index: 1;
+    background-color: white;
+    position: absolute;
+    left: 25%;
+    top: 10%;
+    display: grid;
+    grid-template-columns: 50% auto;
+    /* display: none; */
+}
+
+.overlay-comments {
+    width: 50%;
+    z-index: 1;
+    background-color: white;
+    position: absolute;
+    /* top: 10% + 300px; */
+    top: calc(10% + 275px);
+    left: 25%;
+    max-height: 300px;
+    overflow: auto;
+}
+
+.overlay-image {
+    /* width: 100%; */
+    /* height: 100%; */
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: auto 100%;
+}
+
+.overlay-table {
+    margin: auto;
+}
+
+.overlay-button {
+    margin: auto;
+    display: block;
+    bottom: 0;
+    position: relative;
+    top: 20%;
+}
+
+.overlay-input {
+    width: 35px;
+}
+
+.comments-list {
+    list-style: none;
+}
+
+.comment-title {
+    font-weight: bold;
+    font-size: 1.1em;
+}
+
+.comment-user {
+    font-size: 0.8em;
+    font-style: italic;
+}
+
+.add-comment-button:hover {
+    cursor: pointer;
+}
+
+.overlay-in {
+    width: 80%;
+    display: block;
+    /* height: 100px; */
+    position: relative;
+    left: 10%;
+}
+
+.overlay-score {
+    left: 50%;
+    position: relative;
+    transform: translateX(-50%);
+    width: 125px;
+}

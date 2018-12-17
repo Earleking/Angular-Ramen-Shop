@@ -1,0 +1,11 @@
+.header {
+    font-size: 30px;
+}
+
+.cart:hover {
+    cursor: pointer;
+}
+
+.list-container {
+    list-style: none;
+}

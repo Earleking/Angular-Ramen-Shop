@@ -1,0 +1,17 @@
+<table>
+    <tbody>
+        <tr>
+            <td><b>Email</b></td>
+            <td><input #name type="text"></td>
+        </tr>
+        <tr>
+            <td><b>Password</b></td>
+            <td><input #pass type="text"></td>
+        </tr>
+        <tr>
+            <td>
+                <button (click)="signUp(name.value, pass.value)">Submit</button>
+            </td>
+        </tr>
+    </tbody>
+</table>

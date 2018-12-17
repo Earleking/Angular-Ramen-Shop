@@ -1,0 +1,8 @@
+<div class="header">All Public Collections</div>
+<hr>
+<ul class="list-container">
+    <li *ngFor="let cart of allCollections" class="cart" (click)="open(cart)">
+        {{cart.name}}
+        <hr>
+    </li>
+</ul>

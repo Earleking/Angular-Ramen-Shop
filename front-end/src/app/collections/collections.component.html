@@ -1,0 +1,104 @@
+
+<div class="collection-select">
+    <div style="text-align: center">Select Collection: </div>
+    <select #collectionSelect (change)="changeCollection(collectionSelect.value)">
+        <option value=""></option>
+        <option *ngFor="let z of collections.items | toarray" value="{{z.value._id}}">
+            {{z.value.name}}
+        </option>
+    </select>
+    <button (click)="askNewCollection()">Create New Collection</button>
+    <button (click)="askEditCOllection()">Edit Current Collection</button>
+</div>
+<!-- <div [innerHtml]="testData"></div> -->
+<ul class="cart-list">
+    <li class="cart-header">
+        <div class="list-header"></div>
+        <div class="list-header">Details</div>
+        <div class="list-header">Price</div>
+        <div class="list-header">Quantity</div>
+    </li>
+    <div *ngIf="currentCart">
+        <li *ngFor="let item of currentCart.items" class="cart-item"> 
+            <img src="{{item.ramen.url}}" alt="" class="item-image">
+            <div class="item-details">
+                <div class="item-title vertical-center">{{item.ramen.name}}</div>
+                <div class="item-stock vertical-center">Stock Left: {{item.ramen.quantity}}</div>
+                <!-- <div class="" -->
+            </div>
+            <div class="item-price"><div class="vertical-center">${{item.ramen.price}}</div></div>
+            <div class="item-quantity"><input #me type="number" value="{{item.quantity}}" max="10" min="1" class="vertical-center" (change)="updateQuantity(item, me.value)"></div>
+            <div class="item-buttons"><button class="vertical-center" (click)="showOverlay(item.ramen)">Remove From Cart</button></div>
+            <hr>
+        </li>
+    </div>
+    <li class="cart-item">
+        <div><b>Total Price</b></div>
+        <div></div>
+        <div>${{totalCost}}</div>
+        <div><button (click)="showClearOverlay()">Clear Cart</button></div>
+        <div><button (click)="shareCollecton()">Share</button></div>
+    </li>
+</ul>
+
+<!-- Remove item overlay -->
+<div class="overlay-background" [style.display]="overlayDisplay" (click)="hideOverlay()"></div>
+<div class="overlay" [style.display]="overlayDisplay">
+    <div class="overlay-title vertical-center">
+        {{overlayText}}
+    </div>
+    <!-- Remove item or something -->
+    <div *ngIf="overlayNumber == 1" class="overlay-options vertical-center">
+        <button class="overlay-button" (click)="acceptFunction()">Yes</button>
+        <button class="overlay-button" (click)="hideOverlay()">No</button>
+    </div>
+
+    <!-- Create new collection -->
+    <div *ngIf="overlayNumber == 2" class="create-collection-options vertical-center">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Collection Name: </td>
+                    <td><input #newName type="text"></td>
+                </tr>
+                <tr>
+                    <td>Privacy: </td>
+                    <td><select #privacyType>
+                        <option value="true">Public</option>
+                        <option value="false" selected>Private</option>
+                    </select></td>
+                </tr>
+                <tr>
+                    <td><button class="overlay-button" (click)="acceptFunction(newName.value, privacyType.value)">Create</button></td>
+                    <td><button class="overlay-button" (click)="hideOverlay()">Cancel</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+    <div *ngIf="overlayNumber == 3" class="vertical-center create-collection-options">
+        <table>
+            <tbody>
+                <tr>
+                    <td>Collection Name:</td>
+                    <td><input #newName type="text" value="{{currentCart.name}}"></td>
+                </tr>
+                <tr>
+                    <td>Privacy</td>
+                    <td>
+                        <select #privacyType>
+                            <option value="true" *ngIf="currentCart.isPublic" selected>Public</option>
+                            <option value="true" *ngIf="!currentCart.isPublic" selected>Public</option>
+                            <option value="false" *ngIf="currentCart.isPublic">Private</option>
+                            <option value="false" *ngIf="!currentCart.isPublic">Private</option>
+                        </select>
+                    </td>
+                </tr>
+                <tr>
+                    <td><button (click)="updateCollection(newName.value, privacyType.value)">Save Collection</button></td>
+                    <td><button (click)="askDeleteCollection()">Delete Collection</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

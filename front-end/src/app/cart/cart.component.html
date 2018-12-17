@@ -1,0 +1,39 @@
+<ul class="cart-list">
+    <li class="cart-header">
+        <div class="list-header"></div>
+        <div class="list-header">Details</div>
+        <div class="list-header">Price</div>
+        <div class="list-header">Quantity</div>
+    </li>
+    <li *ngFor="let item of cart.items" class="cart-item"> 
+        <img src="{{item.ramen.url}}" alt="" class="item-image">
+        <div class="item-details">
+            <div class="item-title vertical-center">{{item.ramen.name}}</div>
+            <div class="item-stock vertical-center">Stock Left: {{item.ramen.quantity}}</div>
+            <!-- <div class="" -->
+        </div>
+        <div class="item-price"><div class="vertical-center">${{item.ramen.price}}</div></div>
+        <div class="item-quantity"><input #me type="number" value="{{item.quantity}}" max="10" min="1" class="vertical-center" (change)="updateQuantity(item, me.value)"></div>
+        <div class="item-buttons"><button class="vertical-center" (click)="showOverlay(item.ramen)">Remove From Cart</button></div>
+        <hr>
+    </li>
+    <li class="cart-item">
+        <div><b>Total Price</b></div>
+        <div></div>
+        <div>${{totalCost}}</div>
+        <div><button (click)="showClearOverlay()">Clear Cart</button></div>
+        <div><button (click)="showBuyOverlay()">Buy Items</button></div>
+    </li>
+</ul>
+
+<!-- Remove item overlay -->
+<div class="overlay-background" [style.display]="overlayDisplay" (click)="hideOverlay()"></div>
+<div class="overlay" [style.display]="overlayDisplay">
+    <div class="overlay-title vertical-center">
+        {{overlayText}}
+    </div>
+    <div class="overlay-options vertical-center">
+        <button class="overlay-button" (click)="acceptFunction()">Yes</button>
+        <button class="overlay-button" (click)="hideOverlay()">No</button>
+    </div>
+</div>

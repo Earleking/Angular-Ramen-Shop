@@ -1,0 +1,25 @@
+<div>Manage Comments</div>
+<table>
+    <thead>
+        <tr>
+            <td><b>Title</b></td>
+            <td><b>Comment</b></td>
+            <td><b>Hidden</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let comment of comments">
+            <td>{{comment.title}}</td>
+            <td>{{comment.text}}</td>
+            <td><select #isActive>
+                
+                <option *ngIf="comment.hidden" value="true" selected>Hidden</option>
+                <option *ngIf="!comment.hidden" value="true">Hidden</option>
+                <option *ngIf="comment.hidden" value="false">Visible</option>
+                <option *ngIf="!comment.hidden" value="false" selected>Visible</option>
+
+            </select></td>
+            <td><button (click)="saveComment(isActive.value, comment)">Save Comment</button></td>
+        </tr>
+    </tbody>
+</table>

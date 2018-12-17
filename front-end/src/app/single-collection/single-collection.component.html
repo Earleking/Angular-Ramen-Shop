@@ -1,0 +1,21 @@
+<ul class="cart-list">
+    <li class="cart-header">
+        <div class="list-header">{{owner.name}}</div>
+        <div class="list-header">Details</div>
+        <div class="list-header">Price</div>
+        <div class="list-header">Quantity</div>
+    </li>
+    <div *ngIf="currentCart">
+        <li *ngFor="let item of currentCart.items" class="cart-item"> 
+            <img src="{{item.ramen.url}}" alt="" class="item-image">
+            <div class="item-details">
+                <div class="item-title vertical-center">{{item.ramen.name}}</div>
+                <div class="item-stock vertical-center">Stock Left: {{item.ramen.quantity}}</div>
+                <!-- <div class="" -->
+            </div>
+            <div class="item-price"><div class="vertical-center">${{item.ramen.price}}</div></div>
+            <div class="item-quantity"><div class="vertical-center">{{item.quantity}}</div></div>
+            <hr>
+        </li>
+    </div>
+</ul>

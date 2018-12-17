@@ -1,0 +1,25 @@
+<div>Manage Users</div>
+<table>
+    <thead>
+        <tr>
+            <td><b>Email</b></td>
+            <td><b>Auth Level</b></td>
+            <td><b>Active</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let user of users">
+            <td><input #email type="text" value="{{user.email}}"></td>
+            <td><input #auth type="number" value="{{user.authentication}}"></td>
+            <td><select #isActive>
+                
+                <option *ngIf="user.active" value="true" selected>Active</option>
+                <option *ngIf="!user.active" value="true">Active</option>
+                <option *ngIf="user.active" value="false">Disabled</option>
+                <option *ngIf="!user.active" value="false" selected>Disabled</option>
+
+            </select></td>
+            <td><button (click)="saveUser(email.value, auth.value, isActive.value, user)">Save User</button></td>
+        </tr>
+    </tbody>
+</table>

@@ -1,0 +1,10 @@
+These instructions are for the use of the DCMA and privacy features.
+
+To use any of the following features you are required to be logged onto an admin account.
+
+To change a policy description simply enter the public page as an admin and click on the change policy button. 
+
+To log a complaint, enter the "Logged Complaints" Section found in the footer. There you can see current Complaints as well
+as register new ones. 
+
+This is a quick summary of the features of this website. 

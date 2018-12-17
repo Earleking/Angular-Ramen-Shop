@@ -1,0 +1,8 @@
+<div class="login-box">
+    <div class="login-title">
+        Login
+    </div>
+    <input #username type="text" placeholder="username" class="login-input">
+    <input #password (key.enter)="login(username.value, password.value)" type="password" placeholder="password" class="login-input">
+    <button (click)="login(username.value, password.value)" class="login-input">Login</button>
+</div>

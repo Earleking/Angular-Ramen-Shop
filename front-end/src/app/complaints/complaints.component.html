@@ -1,0 +1,36 @@
+<div>Manage Items</div>
+<table>
+    <thead>
+        <tr>
+            <td><b>Filee</b></td>
+            <td><b>Body</b></td>
+            <td><b>Type</b></td>
+            <td><b>Reolved</b></td>
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let complaint of complaints">
+            <td>{{complaint.filee}}</td>
+            <td>{{complaint.contents}}</td>
+            <td>{{complaint.type}}</td>
+            <td *ngIf="!complaint.resolved"><button (click)="resolve(complaint)">Resolve</button></td>
+            <td *ngIf="complaint.resolved">Resolved</td>
+        </tr>
+    </tbody>
+</table>
+<hr>
+Add a New Item
+<hr>
+<select #type>
+    <option value="takedown" selected>Take Down Request</option>
+    <option value="infringement">Infringement Notice</option>
+    <option value="dispute">Dispute Claim</option>
+</select>
+<input #filee type="text" placeholder="Filee">
+<input #data type="text" placeholder="Text">
+
+<button (click)="createComplaint(type.value, filee.value, data.value)">Add Complaint</button>
+
+<!-- <hr>
+Send takedown Notice
+<hr> -->

@@ -1,0 +1,28 @@
+<div class="home-container">
+    <div class="text-section">
+        <div class="app-title">
+            Ramen Store
+        </div>
+        <div class="app-description">
+            We strive for perfection
+        </div>
+        
+        <button class="general-button to-center" (click)="toCatalog()">Our Offerings</button>
+    </div>
+    <div style="position: relative;">
+        <div class="projects-panel" id="projects-panel">
+            <div *ngFor="let ramen of ramens; let i = index" class="project-pane" id="project-{{i}}"></div>
+            <!-- <div class="project-pane" id="project-2" data-label="Riot-API"></div>
+            <div class="project-pane" id="project-3" data-label="Profile-Site"></div> -->
+            
+        
+            <!-- Mobile Arrows -->
+            <div class="mobile-arrows">
+                <div class="arrow-left" onclick="previousProject()"></div>
+                <div class="arrow-right" onclick="nextProject()"></div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Projects diplay section -->
